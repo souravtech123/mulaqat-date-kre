@@ -1,82 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router";
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <nav className="
       sticky top-0 z-50
       bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e]
-      shadow-lg
-      backdrop-blur-md
+      shadow-lg backdrop-blur-md
     ">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        
-        {/* Logo / Title */}
+
+        {/* Logo */}
         <NavLink
           to="/"
-          className="text-3xl font-bold text-pink-300 hover:text-pink-400 transition"
+          className="text-3xl font-bold text-pink-300"
         >
           💜 Mulaqat
         </NavLink>
 
-        {/* Menu Items */}
+        {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 text-purple-200 font-medium">
-          <li>
-            <NavLink
-              to="/"
-              className="hover:text-pink-300 transition"
-            >
-              Home
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/proposal"
-              className="hover:text-pink-300 transition"
-            >
-              LoveShayari
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/about"
-              className="hover:text-pink-300 transition"
-            >
-              About
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/contact"
-              className="hover:text-pink-300 transition"
-            >
-              Contact
-            </NavLink>
-          </li>
+          <li><NavLink to="/">Home</NavLink></li>
+          <li><NavLink to="/proposal">LoveShayari</NavLink></li>
+          <li><NavLink to="/about">About</NavLink></li>
+          <li><NavLink to="/contact">Contact</NavLink></li>
         </ul>
 
-        {/* Login Button */}
+        {/* Desktop Login */}
         <NavLink
           to="/login"
-          className="
-            hidden md:block
-            bg-gradient-to-r from-pink-500 to-purple-600
-            text-white px-5 py-2 rounded-full
-            hover:scale-105 hover:shadow-lg
-            transition duration-300
-          "
+          className="hidden md:block bg-pink-500 text-white px-5 py-2 rounded-full"
         >
           Login
         </NavLink>
 
-        {/* Mobile Menu Icon */}
-        <div className="md:hidden text-2xl cursor-pointer text-pink-300">
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-3xl text-pink-300"
+        >
           ☰
-        </div>
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden bg-[#1a1635] px-6 py-4 space-y-4 text-purple-200">
+          <NavLink onClick={() => setOpen(false)} to="/" className="block">Home</NavLink>
+          <NavLink onClick={() => setOpen(false)} to="/proposal" className="block">LoveShayari</NavLink>
+          <NavLink onClick={() => setOpen(false)} to="/about" className="block">About</NavLink>
+          <NavLink onClick={() => setOpen(false)} to="/contact" className="block">Contact</NavLink>
+
+          <NavLink
+            onClick={() => setOpen(false)}
+            to="/login"
+            className="block text-center bg-pink-500 text-white py-2 rounded-full"
+          >
+            Login
+          </NavLink>
+        </div>
+      )}
     </nav>
   );
 };
