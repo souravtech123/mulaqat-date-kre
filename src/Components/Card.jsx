@@ -2,19 +2,48 @@ import React from "react";
 
 const Card = ({ place }) => {
   return (
-    <div className="max-w-sm bg-white rounded-xl shadow-md hover:shadow-2xl transition-all p-4">
-      <img 
+    <div className="
+      max-w-sm 
+      rounded-2xl 
+      p-4 
+      bg-gradient-to-br from-purple-600 via-purple-700 to-pink-600
+      shadow-lg 
+      hover:shadow-2xl 
+      hover:scale-105
+      transition-all duration-300
+      text-white
+    ">
+      {/* Image */}
+      <img
         src={place.image}
         alt={place.placeName}
-        className="w-full h-44 object-cover rounded-md"
+        className="w-full h-44 object-cover rounded-xl border-2 border-purple-300"
       />
 
-      <h2 className="text-2xl font-bold mt-3 text-center text-red-500">{place.placeName}</h2>
-      <p className="text-gray-600 text-xl font-semibold text-center text-pink-700 mt-1">Vibe : {place.vibe}</p>
-      <p className="text-gray-600 text-xl font-bold mt-2">Budget: ₹{place.budget}</p>
-      <p className="text-gray-700 text-xl mt-4">{place.description}</p>
+      {/* Title */}
+      <h2 className="text-2xl font-bold mt-3 text-center text-pink-200">
+        {place.placeName}
+      </h2>
 
-      <p className="text-gray-500 text-sm text-center mt-2">⏰ Best Time: {place.timing}</p>
+      {/* Vibe */}
+      <p className="text-lg font-semibold text-center mt-1 text-purple-100">
+        💜 Vibe : {place.vibe}
+      </p>
+
+      {/* Budget */}
+      <p className="text-lg font-bold mt-2 text-pink-100">
+        💰 Budget: ₹{place.budget}
+      </p>
+
+      {/* Description */}
+      <p className="text-sm mt-4 text-purple-100 leading-relaxed">
+        {place.description}
+      </p>
+
+      {/* Timing */}
+      <p className="text-xs text-center mt-3 text-purple-200">
+        ⏰ Best Time: {place.timing}
+      </p>
     </div>
   );
 };
