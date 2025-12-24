@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
+import { Analytics } from '@vercel/analytics/react';
 
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
@@ -11,7 +12,7 @@ import Proposal from "./Components/Proposal";
 const App = () => {
   return (
     <>
-  
+   <Analytics />
       <Navbar />
 
       <Routes>
